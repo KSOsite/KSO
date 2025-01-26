@@ -6,11 +6,6 @@
     <title>TheAiden_PearceProject</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="https://www.pngplay.com/wp-content/uploads/9/Watch-Dogs-Black-Logo-PNG-Images-HD.png" type="image/x-icon">
-    <meta property="og:title" content="The Aiden Pearce Project" />
-    <meta property="og:description" content="La vie est un mystère qu'il faut vivre, et non un problème à résoudre." />
-    <meta property="og:image" content="https://static3.srcdn.com/wordpress/wp-content/uploads/2021/03/Watch-Dogs-Legion-Aiden-Pearce-1.jpg" />
-    <meta property="og:url" content="https://ipm-10.github.io/TheAiden_PearceProject/TAPP.html" />
-    <meta property="og:type" content="website" />
     <style>
         * {
             margin: 0;
@@ -409,11 +404,11 @@
     </footer>
 
     <script type="module">
-       // Importation des modules Firebase
+
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
         import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
+        import { getFirestore, doc, setDoc, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
-        // Configuration Firebase
         const firebaseConfig = {
             apiKey: "AIzaSyCWFkqEvZBgwFaUx5arjB7E9yW6Mi6TTDw",
             authDomain: "site-2a5c4.firebaseapp.com",
@@ -423,9 +418,9 @@
             appId: "1:710301951253:web:f559049ce78ba7c8da751c"
         };
 
-        // Initialiser Firebase
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
+        const db = getFirestore(app);
 
         // Fonction de connexion
         window.login = function () {
@@ -435,16 +430,15 @@
 
             signInWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
-                    // Masquer la section de connexion et afficher les jeux avec une transition
                     document.getElementById('login-section').style.display = 'none';
                     document.getElementById('games-section').style.display = 'block';
                     setTimeout(() => {
                         document.getElementById('games-section').classList.add('show');
-                    }, 10); // Légère transition
+                    }, 10); 
                     displayGames(games, currentPage);
+                    recordLogin(userCredential.user);
                 })
                 .catch((error) => {
-                    // Gestion des erreurs avec des messages plus clairs
                     switch (error.code) {
                         case 'auth/invalid-email':
                             errorElement.textContent = "Adresse email invalide.";
@@ -463,20 +457,34 @@
                     }
                 });
         };
+               
+        function recordLogin(user) {
+            const logCollection = collection(db, "loginLogs");
+            const username = user.email.split('@')[0];
+          
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    const userIp = data.ip; 
 
+                    setDoc(doc(logCollection, username), {
+                        email: user.email,
+                        loginTime: serverTimestamp(),  
+                        ip: userIp, 
+                    });
+                });
+        }
 
         // Vérifier l'état de connexion au chargement de la page
         auth.onAuthStateChanged((user) => {
             if (user) {
-                // Si l'utilisateur est déjà connecté, afficher les jeux avec une transition
                 document.getElementById('login-section').style.display = 'none';
                 document.getElementById('games-section').style.display = 'block';
                 setTimeout(() => {
                     document.getElementById('games-section').classList.add('show');
-                }, 10); // Légère transition
+                }, 10); 
                 displayGames(games, currentPage);
             } else {
-                // Sinon, afficher la section de connexion
                 document.getElementById('login-section').style.display = 'block';
                 document.getElementById('games-section').style.display = 'none';
                 document.getElementById('games-section').classList.remove('show');
@@ -487,7 +495,7 @@
             {
                 title: "Watch Dogs",
                 image: "https://th.bing.com/th/id/R.c02665f8ed5f7d7b8d918f5bacd81888?rik=M5ZjjD9VAuCscg&riu=http%3a%2f%2f3.bp.blogspot.com%2f-sTbOvqSoY-o%2fU4BJFbj62KI%2fAAAAAAAAAX0%2fFjR7O_mF7yU%2fs1600%2f2309326-watchdogs.jpg&ehk=OwfB1wytelmKY4HOAvIRjANgVdOUEbFVmXiOQqKWN7Q%3d&risl=&pid=ImgRaw&r=0",
-                link: "https://mega.nz/file/yz4DVKKA"
+                link: "https://dashboard.blomp.com/dashboard/storage/download_object?path=Watch%20Dogs%20par%20ipm.rar&filename=Watch%20Dogs%20par%20ipm.rar&size=18919617922"
             },
             {
                 title: "The Last of Us",
@@ -540,9 +548,9 @@
                 link: "#"
             },
             {
-                title: "Assassin's Creed Unity",
-                image: "https://images.stopgame.ru/games/logos/14172/assassin_s_creed_unity-square.jpg",
-                link: "https://store-eu-par-5.gofile.io/download/web/e98579af-19d5-4c1e-b1a6-74f13e5b8f3f/Assassin's%20Creed%20Unity%20par%20ipm.rar"
+                title: "Final Fantasy VII Remake",
+                image: "https://upload.wikimedia.org/wikipedia/en/c/ce/FFVIIRemake.png",
+                link: "#"
             },
             {
                 title: "Resident Evil Village",
