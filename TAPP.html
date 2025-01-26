@@ -412,8 +412,7 @@
        // Importation des modules Firebase
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
         import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
-        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-        
+
         // Configuration Firebase
         const firebaseConfig = {
             apiKey: "AIzaSyCWFkqEvZBgwFaUx5arjB7E9yW6Mi6TTDw",
@@ -423,18 +422,17 @@
             messagingSenderId: "710301951253",
             appId: "1:710301951253:web:f559049ce78ba7c8da751c"
         };
-        
+
         // Initialiser Firebase
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
-        const db = getFirestore(app);  // Initialisation de Firestore
-        
+
         // Fonction de connexion
         window.login = function () {
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
             const errorElement = document.getElementById('error');
-        
+
             signInWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
                     // Masquer la section de connexion et afficher les jeux avec une transition
@@ -444,20 +442,6 @@
                         document.getElementById('games-section').classList.add('show');
                     }, 10); // Légère transition
                     displayGames(games, currentPage);
-        
-                    // Enregistrer la connexion de l'utilisateur dans Firestore
-                    const user = userCredential.user;
-                    const logCollection = collection(db, "loginLogs"); // Collection pour les logs de connexion
-                    addDoc(logCollection, {
-                        email: user.email,
-                        uid: user.uid,
-                        loginTime: serverTimestamp(),  // Utilisation du timestamp serveur
-                    }).then(() => {
-                        console.log(`Connexion de ${user.email} enregistrée.`);
-                    }).catch((error) => {
-                        console.error("Erreur lors de l'enregistrement de la connexion : ", error);
-                    });
-        
                 })
                 .catch((error) => {
                     // Gestion des erreurs avec des messages plus clairs
