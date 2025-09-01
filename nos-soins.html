@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nos Soins - Cabinet d'Ostéopathie et Kiné du Sport - Saint-Germain-en-Laye</title>
+  <meta name="description" content="Découvrez nos soins : kinésithérapie, ostéopathie sportive et générale, cryothérapie, laserthérapie, physiothérapie et réentraînement à l'effort à Saint-Germain-en-Laye.">
+  <meta name="keywords" content="kiné, ostéopathie, cryothérapie, laserthérapie, physiothérapie, sport, rééducation, Saint-Germain-en-Laye, kso">
+  <link rel="canonical" href="https://www.votresite.fr/nos-soins">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f8f9fa;
+    }
+
+    /* Header */
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 0.4rem 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+      transition: box-shadow 0.3s ease;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .nav-content {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+    }
+
+    .logo {
+      height: 80px;
+      margin: -15px 0;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      align-items: center;
+      gap: 2.5rem;
+      margin: 0;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      padding: 0.5rem 0;
+      position: relative;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: #007bff;
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #007bff;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .rdv-button {
+      background: linear-gradient(135deg, #007bff, #00bfff);
+      color: white !important;
+      padding: 0.5rem 1.2rem;
+      border: none;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      text-decoration: none;
+      box-shadow: 0 3px 15px rgba(0,123,255,0.3);
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+    }
+
+    .rdv-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(0,123,255,0.4);
+    }
+
+    .rdv-button::after {
+      content: '→';
+      transition: transform 0.2s ease;
+    }
+
+    .rdv-button:hover::after {
+      transform: translateX(4px);
+    }
+
+    /* Section Nos soins */
+    .soins {
+      padding: 8rem 2rem 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .soins h1 {
+      text-align: center;
+      font-size: 3rem;
+      margin-bottom: 3rem;
+      background: linear-gradient(135deg, #007bff, #00bfff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 700;
+    }
+
+    .soins-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    /* Cartes avec images */
+    .soin-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid #e9ecef;
+    }
+
+    .soin-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .soin-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .soin-content {
+      padding: 1.5rem;
+    }
+
+    .soin-card h2 {
+      font-size: 1.25rem;
+      color: #007bff;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .soin-card p {
+      font-size: 0.95rem;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    /* Cartes sans images */
+    .soin-card-no-image {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      position: relative;
+    }
+
+    .soin-card-no-image::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100px;
+      height: 100px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 0 15px 0 100px;
+    }
+
+    .soin-card-no-image h2 {
+      color: white;
+    }
+
+    .soin-card-no-image p {
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .soin-card-kine {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    }
+
+    .soin-card-osteo-generale {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    }
+
+    /* Animation au scroll */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-content { gap: 2rem; }
+      .nav-links { gap: 1.5rem; }
+      .nav-links a { font-size: 0.9rem; }
+      .soins h1 { font-size: 2.2rem; }
+      .soins-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      nav { padding: 0 1rem; }
+      .logo { height: 60px; margin: -10px 0; }
+    }
+
+    @media (max-width: 480px) {
+      nav {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem 1rem;
+      }
+
+      .nav-content {
+        flex-direction: row;
+        gap: 0.5rem;
+        align-items: center;
+      }
+
+      .nav-links {
+        flex-direction: row;
+        gap: 0.3rem;
+      }
+
+      .nav-links a {
+        font-size: 0.75rem; 
+        padding: 0.25rem 0.3rem; 
+      }
+
+      .rdv-button {
+        padding: 0.3rem 0.8rem; 
+        font-size: 0.75rem;    
+      }
+
+      .logo {
+        height: 45px; 
+        margin: 0;
+      }
+
+      .soins h1 { font-size: 1.8rem; }
+      .soins { padding: 6rem 1rem 2rem; }
+      .soin-content { padding: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="sitpap.html"><img src="https://i.imgur.com/4T6yhZH.png" alt="Logo Cabinet Ostéopathie Kiné Saint-Germain-en-Laye" class="logo"></a>
+      <div class="nav-content">
+        <ul class="nav-links">
+          <li><a href="nos-praticiens.html">Nos Praticiens</a></li>
+          <li><a href="nos-soins.html">Nos Soins</a></li>
+        </ul>
+        <a href="https://www.doctolib.fr/masseur-kinesitherapeute/saint-germain-en-laye/jean-philippe-pariel-de-morand" target="_blank" rel="noopener noreferrer" class="rdv-button">
+          Prendre RDV
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="soins">
+    <h1 class="fade-in">Nos Soins</h1>
+    
+    <div class="soins-grid">
+      <div class="soin-card soin-card-no-image soin-card-osteo-generale fade-in">
+        <div class="soin-content">
+          <h2>OSTÉOPATHIE GÉNÉRALE</h2>
+          <p>L'ostéopathie générale s'adresse aux adultes, adolescents, femmes enceintes, nourrissons et seniors. Elle soulage les douleurs musculaires et articulaires, les tensions posturales, les maux de tête et certains troubles digestifs, tout en améliorant la mobilité et le bien-être général.</p>
+        </div>
+      </div>
+
+      <div class="soin-card soin-card-no-image fade-in">
+        <div class="soin-content">
+          <h2>OSTÉOPATHIE SPORTIVE</h2>
+          <p>L'ostéopathie du sport prévient et traite les blessures, optimise la mobilité et l'équilibre, et favorise la récupération pour améliorer la performance sportive.</p>
+        </div>
+      </div>
+
+      <div class="soin-card soin-card-no-image soin-card-kine fade-in">
+        <div class="soin-content">
+          <h2>KINÉSITHÉRAPIE ET TRAUMATOLOGIE DU SPORT</h2>
+          <p>Prévention et traitement des blessures sportives pour soulager la douleur, restaurer la mobilité et optimiser la récupération.</p>
+        </div>
+      </div>
+
+      <div class="soin-card fade-in">
+        <img src="https://www.imagerie-cardinet.fr/app/uploads/2024/12/cover-irm-paris-echographie-musculosquelettique-cardinet.jpg.webp" alt="Échographie MSK" class="soin-image">
+        <div class="soin-content">
+          <h2>ÉCHOGRAPHIE MSK</h2>
+          <p>Outil d'évaluation fonctionnelle pour guider votre rééducation et suivre vos progrès musculaires et tendineux.</p>
+        </div>
+      </div>
+
+      <div class="soin-card fade-in">
+        <img src="https://www.zimmer.de/en/wp-content/uploads/sites/2/2016/11/en-puls_10b-scaled.jpg" alt="Ondes de chocs" class="soin-image">
+        <div class="soin-content">
+          <h2>ONDES DE CHOCS</h2>
+          <p>Traitement non invasif pour soulager rapidement les douleurs chroniques et favoriser la récupération musculaire et tendineuse. Idéal pour tendinites, épicondylites, fasciites plantaires et pathologies sportives.</p>
+        </div>
+      </div>
+
+      <div class="soin-card fade-in">
+        <img src="https://zimmer.de/en/wp-content/uploads/sites/2/2016/10/Seite-4_05_01_phs_elektro_simultan_detail_-940x376.jpg" alt="Physiothérapie" class="soin-image">
+        <div class="soin-content">
+          <h2>PHYSIOTHÉRAPIE</h2>
+          <p>Techniques comme l'électrothérapie ou les ondes pour restaurer les capacités fonctionnelles, réduire la douleur et optimiser la performance.</p>
+        </div>
+      </div>
+
+      <div class="soin-card fade-in">
+        <img src="https://img.medicalexpo.fr/images_me/photo-g/70625-11143565.jpg" alt="Laserthérapie" class="soin-image">
+        <div class="soin-content">
+          <h2>LASERTHÉRAPIE</h2>
+          <p>Favorise la cicatrisation, la régénération tissulaire et le soulagement des douleurs.</p>
+        </div>
+      </div>
+
+      <div class="soin-card fade-in">
+        <img src="https://www.zimmer.de/en/wp-content/uploads/sites/2/2016/11/Cryo6_arm_dick-scaled.jpg" alt="Cryothérapie" class="soin-image">
+        <div class="soin-content">
+          <h2>CRYOTHÉRAPIE</h2>
+          <p>Traite la douleur, réduit l'inflammation et accélère la récupération après l'effort.</p>
+        </div>
+      </div>
+
+      <div class="soin-card fade-in">
+        <img src="https://i.dailymail.co.uk/1s/2021/12/24/00/52169221-0-image-m-23_1640307360283.jpg" alt="Réentraînement à l'effort" class="soin-image">
+        <div class="soin-content">
+          <h2>RÉENTRAÎNEMENT À L'EFFORT</h2>
+          <p>Programme de reprise sportive progressive, sécurisé et adapté à chaque niveau de pratique.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Animation on scroll
+    const observerOptions = { 
+      threshold: 0.2, 
+      rootMargin: '0px 0px -50px 0px' 
+    };
+    
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Ombre dynamique du header
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('header');
+      if (window.scrollY > 100) {
+        header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.15)';
+      } else {
+        header.style.boxShadow = '0 1px 10px rgba(0, 0, 0, 0.1)';
+      }
+    });
+  </script>
+</body>
+</html>
