@@ -1,505 +1,76 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nos Praticiens - KSO - Saint-Germain-en-Laye</title>
-  <meta name="description" content="Découvrez notre équipe de professionnels : Jean-Philippe Pariel de Morand, ostéopathe et kinésithérapeute expérimenté à Saint-Germain-en-Laye.">
-  <meta name="keywords" content="ostéopathe, kinésithérapeute, Jean-Philippe Pariel de Morand, Saint-Germain-en-Laye, sport, praticien, kso">
+  <meta name="description"
+    content="Découvrez notre équipe de professionnels : Jean-Philippe Pariel de Morand, ostéopathe et kinésithérapeute expérimenté à Saint-Germain-en-Laye.">
+  <meta name="keywords"
+    content="ostéopathe, kinésithérapeute, Jean-Philippe Pariel de Morand, Saint-Germain-en-Laye, sport, praticien, kso">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0066FF">
+  <meta property="og:title" content="Nos Praticiens - KSO - Saint-Germain-en-Laye">
+  <meta property="og:description"
+    content="Découvrez notre équipe de professionnels : Jean-Philippe Pariel de Morand, ostéopathe et kinésithérapeute expérimenté.">
+  <meta property="og:image" content="https://i.imgur.com/4T6yhZH.png">
+  <meta property="og:url" content="https://kinesportosteopathesaintgermainenlaye.fr/nos-praticiens">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://i.imgur.com/4T6yhZH.png">
   <link rel="icon" href="https://i.imgur.com/4T6yhZH.png">
   <link rel="canonical" href="https://kinesportosteopathesaintgermainenlaye.fr/nos-praticiens">
   <link rel="icon" href="https://i.imgur.com/4T6yhZH.png" type="image/png" sizes="32x32">
   <link rel="icon" href="https://i.imgur.com/4T6yhZH.png" type="image/png" sizes="16x16">
   <link rel="apple-touch-icon" href="https://i.imgur.com/4T6yhZH.png">
-  <meta property="og:image" content="https://i.imgur.com/4T6yhZH.png">
-  <meta name="twitter:image" content="https://i.imgur.com/4T6yhZH.png">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
-      color: #333;
-      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    }
-
-    /* Header (conservé) */
-    header {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      padding: 0.4rem 0;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
-      transition: box-shadow 0.3s ease;
-    }
-
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    .nav-content {
-      display: flex;
-      align-items: center;
-      gap: 3rem;
-    }
-
-    .logo {
-      height: 80px;
-      margin: -15px 0;
-      cursor: pointer;
-      transition: transform 0.2s ease;
-    }
-
-    .logo:hover {
-      transform: scale(1.05);
-    }
-
-    .nav-links {
-      display: flex;
-      list-style: none;
-      align-items: center;
-      gap: 2.5rem;
-      margin: 0;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: #333;
-      font-weight: 500;
-      padding: 0.5rem 0;
-      position: relative;
-      transition: color 0.2s ease;
-    }
-
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: 0;
-      left: 0;
-      background-color: #007bff;
-      transition: width 0.3s ease;
-    }
-
-    .nav-links a:hover {
-      color: #007bff;
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
-    .rdv-button {
-      background: linear-gradient(135deg, #007bff, #00bfff);
-      color: white !important;
-      padding: 0.5rem 1.2rem;
-      border: none;
-      border-radius: 30px;
-      font-weight: 600;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      text-decoration: none;
-      box-shadow: 0 3px 15px rgba(0,123,255,0.3);
-      font-size: 0.95rem;
-      transition: all 0.3s ease;
-    }
-
-    .rdv-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 25px rgba(0,123,255,0.4);
-    }
-
-    .rdv-button::after {
-      content: '→';
-      transition: transform 0.2s ease;
-    }
-
-    .rdv-button:hover::after {
-      transform: translateX(4px);
-    }
-
-    /* Nouveau design main */
-    .hero-section {
-      padding: 120px 2rem 60px;
-      text-align: center;
-      background: linear-gradient(135deg, #007bff 0%, #00bfff 100%);
-      color: white;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path d="M1200 0L0 0 598.97 114.72 1200 0z" fill="rgba(255,255,255,0.1)"/></svg>') no-repeat center bottom;
-      background-size: cover;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .hero-title {
-      font-size: 3.5rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      animation: fadeInUp 1s ease;
-    }
-
-    .hero-subtitle {
-      font-size: 1.3rem;
-      opacity: 0.9;
-      font-weight: 300;
-      animation: fadeInUp 1s ease 0.2s both;
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .main-content {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 80px 2rem;
-    }
-
-    .practitioner-card {
-      background: white;
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-      transform: translateY(0);
-      transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-    }
-
-    .practitioner-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
-    }
-
-    .card-header {
-      background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
-      padding: 60px 40px;
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-
-    .practitioner-image {
-      width: 280px;
-      height: 280px;
-      border-radius: 20px;
-      object-fit: cover;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-    }
-
-    .practitioner-image:hover {
-      transform: scale(1.05);
-    }
-
-    .practitioner-info h2 {
-      font-size: 2.8rem;
-      color: #2c3e50;
-      margin-bottom: 0.5rem;
-      font-weight: 700;
-      line-height: 1.2;
-    }
-
-    .practitioner-role {
-      font-size: 1.4rem;
-      color: #007bff;
-      margin-bottom: 2rem;
-      font-weight: 500;
-    }
-
-    .practitioner-description {
-      font-size: 1.1rem;
-      color: #666;
-      line-height: 1.7;
-      margin-bottom: 2rem;
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-
-    .stat-item {
-      text-align: center;
-      padding: 1rem;
-      background: rgba(0, 123, 255, 0.05);
-      border-radius: 12px;
-      border: 1px solid rgba(0, 123, 255, 0.1);
-      transition: all 0.3s ease;
-    }
-
-    .stat-item:hover {
-      background: rgba(0, 123, 255, 0.1);
-      transform: translateY(-2px);
-    }
-
-    .stat-number {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #007bff;
-      display: block;
-    }
-
-    .stat-label {
-      font-size: 0.9rem;
-      color: #666;
-      margin-top: 0.5rem;
-    }
-
-    .qualifications-section {
-      padding: 60px 40px;
-      background: #f8f9fa;
-    }
-
-    .section-title {
-      font-size: 2.2rem;
-      color: #2c3e50;
-      margin-bottom: 3rem;
-      text-align: center;
-      font-weight: 600;
-      position: relative;
-    }
-
-    .section-title::after {
-      content: '';
-      width: 60px;
-      height: 4px;
-      background: linear-gradient(135deg, #007bff, #00bfff);
-      border-radius: 2px;
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .qualifications-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-
-    .qualification-card {
-      background: white;
-      padding: 2rem;
-      border-radius: 16px;
-      border-left: 4px solid #28a745;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .qualification-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: -50px;
-      width: 100px;
-      height: 100px;
-      background: radial-gradient(circle, rgba(40, 167, 69, 0.1) 0%, transparent 70%);
-      border-radius: 50%;
-    }
-
-    .qualification-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-      border-left-color: #007bff;
-    }
-
-    .qualification-title {
-      font-size: 1.3rem;
-      color: #2c3e50;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-
-    .qualification-subtitle {
-      color: #666;
-      font-size: 0.95rem;
-    }
-
-    .expertise-section {
-      padding: 60px 40px;
-      background: white;
-    }
-
-    .expertise-content {
-      font-size: 1.15rem;
-      color: #555;
-      line-height: 1.8;
-      text-align: justify;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .nav-content { gap: 2rem; }
-      .nav-links { gap: 1.5rem; }
-      .nav-links a { font-size: 0.9rem; }
-      nav { padding: 0 1rem; }
-      .logo { height: 60px; margin: -10px 0; }
-      
-      .hero-title { font-size: 2.5rem; }
-      .hero-subtitle { font-size: 1.1rem; }
-      
-      .card-header {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 30px;
-        padding: 40px 20px;
-      }
-      
-      .practitioner-image { 
-        width: 220px; 
-        height: 220px; 
-        margin: 0 auto;
-      }
-      .practitioner-info h2 { font-size: 2.2rem; }
-      
-      .stats-grid { 
-        grid-template-columns: repeat(3, 1fr); 
-        justify-items: center;
-      }
-      
-      .qualifications-section, .expertise-section { padding: 40px 20px; }
-      .qualifications-grid { grid-template-columns: 1fr; }
-    }
-
-    @media (max-width: 480px) {
-      nav {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0.5rem 1rem;
-      }
-
-      .nav-content {
-        flex-direction: row;
-        gap: 0.5rem;
-        align-items: center;
-      }
-
-      .nav-links {
-        flex-direction: row;
-        gap: 0.3rem;
-      }
-
-      .nav-links a {
-        font-size: 0.75rem; 
-        padding: 0.25rem 0.3rem; 
-      }
-
-      .rdv-button {
-        padding: 0.3rem 0.8rem; 
-        font-size: 0.75rem;    
-      }
-
-      .logo {
-        height: 45px; 
-        margin: 0;
-      }
-
-      .hero-title { font-size: 2rem; }
-      .hero-section { padding: 100px 1rem 40px; }
-      .main-content { padding: 40px 0.5rem; }
-      
-      .practitioner-card {
-        margin: 0 0.5rem;
-        border-radius: 16px;
-      }
-      
-      .card-header {
-        padding: 30px 1rem;
-      }
-      
-      .practitioner-image { 
-        width: 180px; 
-        height: 180px; 
-        margin: 0 auto;
-      }
-      .practitioner-info h2 { font-size: 1.8rem; }
-      .stats-grid { 
-        grid-template-columns: repeat(3, 1fr); 
-        gap: 0.5rem;
-        justify-items: center;
-      }
-      
-      .stat-item {
-        padding: 0.8rem 0.5rem;
-        font-size: 0.85rem;
-      }
-      
-      .stat-number {
-        font-size: 1.6rem;
-      }
-      
-      .qualifications-section, .expertise-section { 
-        padding: 40px 1rem; 
-      }
-      
-      .qualifications-grid { grid-template-columns: 1fr; }
-      .qualification-card { 
-        padding: 1.5rem; 
-        margin: 0 0.5rem;
-      }
-      .expertise-content { 
-        font-size: 1rem; 
-        padding: 0 0.5rem;
-      }
-    }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap"
+    rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Physician",
+    "name": "Jean-Philippe Pariel de Morand",
+    "jobTitle": "Ostéopathe & Kinésithérapeute du Sport",
+    "description": "Expert reconnu avec une approche holistique de la santé, spécialisé dans l'accompagnement des sportifs et la prise en charge des troubles musculo-squelettiques.",
+    "worksFor": {
+      "@type": "MedicalBusiness",
+      "name": "Cabinet d'Ostéopathie et Kiné du Sport",
+      "url": "https://kinesportosteopathesaintgermainenlaye.fr"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "3 Bis rue Armagis",
+      "addressLocality": "Saint-Germain-en-Laye",
+      "postalCode": "78100",
+      "addressCountry": "FR"
+    },
+    "medicalSpecialty": ["Osteopathic", "SportsMedicine"],
+    "sameAs": [
+      "https://www.doctolib.fr/masseur-kinesitherapeute/saint-germain-en-laye/jean-philippe-pariel-de-morand"
+    ]
+  }
+  </script>
+  <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
   <header>
     <nav>
-      <a href="index"><img src="https://i.imgur.com/4T6yhZH.png" alt="Logo Cabinet Ostéopathie Kiné Saint-Germain-en-Laye" class="logo"></a>
-      <div class="nav-content">
+      <a href="index"><img src="https://i.imgur.com/4T6yhZH.png"
+          alt="Logo Cabinet Ostéopathie Kiné Saint-Germain-en-Laye" class="logo"></a>
+      <button class="menu-toggle" aria-label="Menu" id="menuToggle"><span></span><span></span><span></span></button>
+      <div class="nav-content" id="navContent">
         <ul class="nav-links">
-          <li><a href="nos-practiciens">Nos Praticiens</a></li>
+          <li><a href="nos-praticiens">Nos Praticiens</a></li>
           <li><a href="nos-soins">Nos Soins</a></li>
         </ul>
-        <a href="https://www.doctolib.fr/masseur-kinesitherapeute/saint-germain-en-laye/jean-philippe-pariel-de-morand" target="_blank" rel="noopener noreferrer" class="rdv-button">
-          Prendre RDV
-        </a>
+        <a href="https://www.doctolib.fr/masseur-kinesitherapeute/saint-germain-en-laye/jean-philippe-pariel-de-morand"
+          target="_blank" rel="noopener noreferrer" class="rdv-button">Prendre RDV</a>
       </div>
     </nav>
   </header>
@@ -512,58 +83,50 @@
   </section>
 
   <main class="main-content">
-    <div class="practitioner-card">
+    <div class="practitioner-card reveal">
       <div class="card-header">
-        <img src="https://i.ibb.co/35y99XF2/Design-sans-titre.png" alt="Jean-Philippe Pariel de Morand" class="practitioner-image">
-        
+        <img src="https://i.ibb.co/35y99XF2/Design-sans-titre.png" alt="Jean-Philippe Pariel de Morand"
+          class="practitioner-image" loading="lazy">
         <div class="practitioner-info">
           <h2>Jean-Philippe Pariel de Morand</h2>
-          <p class="practitioner-role">Ostéopathe & Kinésithérapeute du Sport</p>
-          <p class="practitioner-description">
-            Expert reconnu avec une approche holistique de la santé, spécialisé dans l'accompagnement des sportifs et la prise en charge des troubles musculo-squelettiques.
-          </p>
-          
+          <p class="practitioner-role">Ostéopathe &amp; Kinésithérapeute du Sport</p>
+          <p class="practitioner-description">Expert reconnu avec une approche holistique de la santé, spécialisé dans
+            l'accompagnement des sportifs et la prise en charge des troubles musculo-squelettiques.</p>
           <div class="stats-grid">
-            <div class="stat-item">
-              <span class="stat-number">30+</span>
-              <span class="stat-label">Années d'expérience</span>
+            <div class="stat-item"><span class="stat-number">30+</span><span class="stat-label">Années
+                d'expérience</span></div>
+            <div class="stat-item"><span class="stat-number">6</span><span class="stat-label">Spécialisations</span>
             </div>
-            <div class="stat-item">
-              <span class="stat-number">6</span>
-              <span class="stat-label">Spécialisations</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-number">2</span>
-              <span class="stat-label">Pays d'exercice</span>
+            <div class="stat-item"><span class="stat-number">2</span><span class="stat-label">Pays d'exercice</span>
             </div>
           </div>
         </div>
       </div>
 
       <div class="qualifications-section">
-        <h3 class="section-title">Qualifications & Diplômes</h3>
+        <h3 class="section-title">Qualifications &amp; Diplômes</h3>
         <div class="qualifications-grid">
-          <div class="qualification-card">
+          <div class="qualification-card reveal">
             <div class="qualification-title">Ostéopathe DO</div>
             <div class="qualification-subtitle">Diplôme français</div>
           </div>
-          <div class="qualification-card">
+          <div class="qualification-card reveal">
             <div class="qualification-title">Ostéopathe CO</div>
             <div class="qualification-subtitle">Certification Royaume-Uni</div>
           </div>
-          <div class="qualification-card">
+          <div class="qualification-card reveal">
             <div class="qualification-title">Kinésithérapeute D.E</div>
             <div class="qualification-subtitle">Diplôme d'État</div>
           </div>
-          <div class="qualification-card">
+          <div class="qualification-card reveal">
             <div class="qualification-title">DIU Kinésithérapie du Sport</div>
             <div class="qualification-subtitle">Spécialisation sportive</div>
           </div>
-          <div class="qualification-card">
+          <div class="qualification-card reveal">
             <div class="qualification-title">Certificat de Posturologie</div>
             <div class="qualification-subtitle">Analyse posturale</div>
           </div>
-          <div class="qualification-card">
+          <div class="qualification-card reveal">
             <div class="qualification-title">Certificat d'Orthopractie</div>
             <div class="qualification-subtitle">Techniques manuelles</div>
           </div>
@@ -571,48 +134,24 @@
       </div>
 
       <div class="expertise-section">
-        <h3 class="section-title">Parcours & Expertise</h3>
-        <div class="expertise-content">
-          Son parcours international, à la fois dans l'enseignement et la pratique clinique, lui a permis de développer une approche unique adaptée aux besoins des sportifs. Il a exercé dans des structures de prestige, notamment dans les domaines du triathlon et du football, garantissant des soins personnalisés et optimisés pour la performance et la récupération. Sa philosophie de soins s'articule autour d'une prise en charge globale, alliant techniques manuelles traditionnelles et approches innovantes pour offrir à ses patients les meilleurs résultats thérapeutiques.
-        </div>
+        <h3 class="section-title">Parcours &amp; Expertise</h3>
+        <div class="expertise-content">Son parcours international, à la fois dans l'enseignement et la pratique
+          clinique, lui a permis de développer une approche unique adaptée aux besoins des sportifs. Il a exercé dans
+          des structures de prestige, notamment dans les domaines du triathlon et du football, garantissant des soins
+          personnalisés et optimisés pour la performance et la récupération. Sa philosophie de soins s'articule autour
+          d'une prise en charge globale, alliant techniques manuelles traditionnelles et approches innovantes pour
+          offrir à ses patients les meilleurs résultats thérapeutiques.</div>
       </div>
     </div>
   </main>
 
-  <script>
-    // Ombre dynamique du header
-    window.addEventListener('scroll', function() {
-      const header = document.querySelector('header');
-      if (window.scrollY > 100) {
-        header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.15)';
-      } else {
-        header.style.boxShadow = '0 1px 10px rgba(0, 0, 0, 0.1)';
-      }
-    });
+  <footer>
+    <div>
+      <p>&copy; 2026 Cabinet d'Ostéopathie et de Kiné du Sport &mdash; Saint-Germain-en-Laye</p>
+    </div>
+  </footer>
 
-    // Animation des cartes au scroll
-    const observerOptions = { 
-      threshold: 0.1, 
-      rootMargin: '0px 0px -50px 0px' 
-    };
-    
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
-        }
-      });
-    }, observerOptions);
-
-    document.querySelectorAll('.qualification-card').forEach(el => observer.observe(el));
-  </script>
+  <script src="js/script.js"></script>
 </body>
 
 </html>
-
-
-
-
-
-
-
