@@ -1,5 +1,15 @@
 // ===== KSO — Shared Script =====
 
+// --- Doctolib Widget Integration ---
+document.addEventListener('DOMContentLoaded', () => {
+    (function (d, s, id) {
+        if (d.getElementById(id)) return;
+        var js = d.createElement(s); js.id = id;
+        js.src = "https://www.doctolib.fr/external_button/1.js";
+        d.head.appendChild(js);
+    }(document, 'script', 'doctolib-js'));
+});
+
 document.addEventListener('DOMContentLoaded', () => {
     // --- Header scroll effect ---
     const header = document.querySelector('header');
