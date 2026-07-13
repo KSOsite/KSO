@@ -2,20 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://kinesportosteopathesaintgermainenlaye.fr/</loc>
-    <lastmod>2026-02-11</lastmod>
+    <lastmod>2026-07-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://kinesportosteopathesaintgermainenlaye.fr/nos-praticiens</loc>
-    <lastmod>2026-02-11</lastmod>
+    <loc>https://kinesportosteopathesaintgermainenlaye.fr/nos-praticiens.html</loc>
+    <lastmod>2026-07-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kinesportosteopathesaintgermainenlaye.fr/nos-soins</loc>
-    <lastmod>2026-02-11</lastmod>
+    <loc>https://kinesportosteopathesaintgermainenlaye.fr/nos-soins.html</loc>
+    <lastmod>2026-07-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kinesportosteopathesaintgermainenlaye.fr/mentions-legales.html</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.2</priority>
   </url>
 </urlset>
