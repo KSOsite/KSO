@@ -1,17 +1,17 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nos Soins - KSO - Saint-Germain-en-Laye</title>
+  <title>Soins - KSO - Saint-Germain-en-Laye</title>
   <meta name="description"
     content="Découvrez nos soins : kinésithérapie, ostéopathie sportive et générale, cryothérapie, laserthérapie, physiothérapie et réentraînement à l'effort à Saint-Germain-en-Laye.">
   <meta name="keywords"
     content="kiné, ostéopathie, cryothérapie, laserthérapie, physiothérapie, sport, rééducation, Saint-Germain-en-Laye, kso">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#0066FF">
-  <meta property="og:title" content="Nos Soins - KSO - Saint-Germain-en-Laye">
+  <meta property="og:title" content="Soins - KSO - Saint-Germain-en-Laye">
   <meta property="og:description"
     content="Découvrez nos soins : kinésithérapie, ostéopathie sportive et générale, cryothérapie, laserthérapie à Saint-Germain-en-Laye.">
   <meta property="og:image" content="https://i.imgur.com/4T6yhZH.png">
@@ -28,7 +28,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
     rel="stylesheet">
   <script type="application/ld+json">
   {
@@ -65,26 +65,44 @@
 </head>
 
 <body>
+  <!-- FAB Doctolib (apparaît au scroll) -->
+  <a href="https://www.doctolib.fr/masseur-kinesitherapeute/saint-germain-en-laye/jean-philippe-pariel-de-morand"
+     target="_blank" rel="noopener noreferrer"
+     class="fab-rdv" id="fabRdv" aria-label="Prendre rendez-vous sur Doctolib">
+      Prendre&nbsp;RDV
+  </a>
+
   <header>
     <nav>
-      <a href="index"><img src="https://i.imgur.com/4T6yhZH.png"
-          alt="Logo Cabinet Ostéopathie Kiné Saint-Germain-en-Laye" class="logo"></a>
-      <button class="menu-toggle" aria-label="Menu" id="menuToggle"><span></span><span></span><span></span></button>
+      <a href="index.html"><img src="https://i.imgur.com/4T6yhZH.png"
+          alt="Logo Cabinet Ostéopathie Kiné Saint-Germain-en-Laye" class="logo" width="68" height="68"></a>
+      <div class="nav-actions">
+          <button class="menu-toggle" aria-label="Menu" id="menuToggle"><span></span><span></span><span></span></button>
+      </div>
       <div class="nav-content" id="navContent">
         <ul class="nav-links">
-          <li><a href="nos-praticiens">Nos Praticiens</a></li>
-          <li><a href="nos-soins">Nos Soins</a></li>
+          <li><a href="nos-praticiens.html">Praticien</a></li>
+          <li><a href="nos-soins.html">Soins</a></li>
         </ul>
         <a href="https://www.doctolib.fr/masseur-kinesitherapeute/saint-germain-en-laye/jean-philippe-pariel-de-morand"
-          class="rdv-button doctolib-booking-button" data-doctolib-id="jean-philippe-pariel-de-morand"
-          data-doctolib-type="practitioner" data-doctolib-speciality="masseur-kinesitherapeute"
-          data-doctolib-place="saint-germain-en-laye">Prendre RDV</a>
+            target="_blank" rel="noopener noreferrer" class="rdv-button">
+            Prendre RDV
+        </a>
       </div>
     </nav>
   </header>
 
+  <!-- CTA mobile central (remplace le FAB sur mobile) -->
+  <a href="https://www.doctolib.fr/masseur-kinesitherapeute/saint-germain-en-laye/jean-philippe-pariel-de-morand"
+     target="_blank" rel="noopener noreferrer" class="mobile-cta-reach" aria-label="Prendre RDV sur Doctolib">
+    <span class="cta-icon" aria-hidden="true"></span>
+    <span>Prendre RDV</span>
+
+  </a>
+
   <div class="page-header">
-    <h1 class="reveal">Nos Soins</h1>
+
+    <h1 class="reveal">Soins</h1>
   </div>
 
   <main class="soins-section">
@@ -129,7 +147,7 @@
         <img src="https://www.zimmer.de/en/wp-content/uploads/sites/2/2016/11/en-puls_10b-scaled.jpg"
           alt="Ondes de chocs" class="soin-image" loading="lazy">
         <div class="soin-content">
-          <h2>ONDES DE CHOCS</h2>
+          <h2>ONDES DE CHOC</h2>
           <p>Traitement non invasif pour soulager rapidement les douleurs chroniques et favoriser la récupération
             musculaire et tendineuse. Idéal pour tendinites, épicondylites, fasciites plantaires et pathologies
             sportives.</p>
@@ -177,8 +195,8 @@
   </main>
 
   <footer>
-    <div>
-      <p>&copy; 2026 Cabinet d'Ostéopathie et de Kiné du Sport &mdash; Saint-Germain-en-Laye</p>
+    <div class="container">
+        <p>Cabinet d'Ostéopathie &amp; de Kiné du Sport &mdash; 3 Bis rue Armagis, 78100 Saint-Germain-en-Laye &mdash; <a href="mentions-legales.html">Mentions Légales</a></p>
     </div>
   </footer>
 
