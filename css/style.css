@@ -2,31 +2,31 @@
 
 /* --- Design Tokens --- */
 :root {
-    --primary: #0066FF;
-    --primary-dark: #0050CC;
-    --primary-light: #E8F0FE;
-    --accent: #00B4D8;
-    --accent-light: #E0F7FA;
+    --primary: #0A58CA;
+    --primary-dark: #084298;
+    --primary-light: #EAF2FF;
+    --accent: #0096B4;
+    --accent-light: #E5F8FC;
     --white: #FFFFFF;
-    --bg: #FFFFFF;
-    --bg-alt: #F8FAFC;
-    --bg-footer: #F1F5F9;
+    --bg: #FAFCFF;
+    --bg-alt: #F3F7FA;
+    --bg-footer: #0F172A;
     --card-bg: #FFFFFF;
-    --border: #E2E8F0;
+    --border: rgba(226, 232, 240, 0.8);
     --border-light: #F1F5F9;
-    --text: #1E293B;
+    --text: #0F172A;
     --text-secondary: #475569;
-    --text-muted: #94A3B8;
-    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
-    --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.06);
-    --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.08);
-    --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.10);
-    --radius: 16px;
-    --radius-lg: 24px;
+    --text-muted: #64748B;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+    --shadow-md: 0 10px 30px rgba(15, 23, 42, 0.04);
+    --shadow-lg: 0 20px 40px rgba(15, 23, 42, 0.06);
+    --shadow-xl: 0 30px 65px rgba(15, 23, 42, 0.1);
+    --radius: 20px;
+    --radius-lg: 28px;
     --radius-full: 9999px;
     --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-display: 'Playfair Display', Georgia, serif;
+    --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 /* --- Reset --- */
@@ -157,26 +157,29 @@ nav {
     width: 100%;
 }
 
-/* CTA Button */
+/* CTA Button — standard (inside burger menu) */
 .rdv-button {
     background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
     color: #fff !important;
-    padding: 0.6rem 1.5rem;
+    padding: 0.75rem 2rem;
     border: none;
     border-radius: var(--radius-full);
-    font-weight: 600;
-    font-size: 0.9rem;
+    font-weight: 700;
+    font-size: 0.95rem;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    box-shadow: 0 4px 14px rgba(0, 102, 255, 0.25);
+    box-shadow: 0 4px 14px rgba(10, 88, 202, 0.3);
     transition: var(--transition);
+    text-align: center;
+    justify-content: center;
 }
 
 .rdv-button:hover {
-    transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 6px 24px rgba(0, 102, 255, 0.35);
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 8px 26px rgba(10, 88, 202, 0.55);
+    background: linear-gradient(135deg, #0A58CA 0%, #00b8d4 100%);
 }
 
 .rdv-button::after {
@@ -185,8 +188,222 @@ nav {
 }
 
 .rdv-button:hover::after {
-    transform: translateX(4px);
+    transform: translateX(5px);
 }
+
+/* ===========================
+   FAB — BOUTON FLOTTANT RDV
+   =========================== */
+.fab-rdv {
+    display: none !important;
+}
+
+
+
+
+
+
+
+.fab-rdv:hover {
+    box-shadow: 0 12px 36px rgba(10, 88, 202, 0.6);
+    transform: translateY(-2px) scale(1.03);
+}
+
+/* Icône agenda dans le FAB */
+.fab-rdv::before {
+    content: '📅';
+    font-size: 1.35rem;
+    line-height: 1;
+    transform: translateY(-0.5px);
+}
+
+.fab-rdv {
+    overflow: hidden;
+    text-indent: -9999px; /* masquage du texte (accessible via aria-label) */
+    letter-spacing: 0;
+}
+
+/* Anneau pulsant autour du FAB */
+.fab-rdv::after {
+    content: '';
+    position: absolute;
+    inset: -5px;
+    border-radius: var(--radius-full);
+    border: 2px solid rgba(10, 88, 202, 0.28);
+    animation: fab-ring 2.2s ease-in-out infinite;
+    pointer-events: none;
+}
+
+
+@keyframes fab-ring {
+    0%, 100% { opacity: 0.6; transform: scale(1);    }
+    50%       { opacity: 0;   transform: scale(1.14); }
+}
+
+/* Animation smooth “tranquille” pour le FAB */
+@keyframes fab-smooth-fade {
+    from { opacity: 0; transform: translateY(14px) scale(0.95); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+
+/* Sur mobile: le CTA central doit remplacer le FAB */
+/* Verrou global: le CTA mobile ne doit jamais s’afficher sur desktop */
+.mobile-cta-reach { display: none !important; }
+.mobile-cta-reach.visible { display: none !important; }
+
+
+@media (max-width: 600px) {
+    /* Sur mobile: invisible par défaut, visible uniquement si .visible est ajoutée */
+    .mobile-cta-reach { display: none !important; }
+
+
+    .mobile-cta-reach.visible {
+        display: flex !important;
+        opacity: 1;
+        pointer-events: auto;
+        animation: none;
+
+    }
+
+
+
+
+
+
+
+    .mobile-cta-reach {
+        background-image: linear-gradient(135deg, #0A58CA 0%, #0096B4 55%, #6EE7FF 100%);
+
+        position: fixed;
+        left: 50%;
+        bottom: 1.1rem;
+        transform: translateX(-50%) translateY(18px) scale(0.97);
+        z-index: 1002;
+        width: min(340px, calc(100vw - 2.2rem));
+        height: 58px;
+        border-radius: 9999px;
+        background: linear-gradient(135deg, #0A58CA 0%, #0096B4 100%);
+        box-shadow: 0 18px 50px rgba(10, 88, 202, 0.55);
+        border: 1px solid rgba(255,255,255,0.22);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+        color: #fff;
+        text-align: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.35s ease, transform 0.55s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease;
+        font-weight: 900;
+        letter-spacing: 0.01em;
+    }
+
+.mobile-cta-reach.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0) scale(1);
+
+    /* Smooth appear (premium) */
+    animation: mobile-cta-smooth-in 380ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes mobile-cta-smooth-in {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(18px) scale(0.98);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0) scale(1);
+    }
+}
+
+
+
+    .mobile-cta-reach {
+        transition: opacity 0.3s ease, transform 0.35s ease, box-shadow 0.25s ease;
+    }
+
+
+
+
+
+
+
+
+
+    @keyframes mobile-cta-addictive {
+        0%, 100% { transform: translateX(-50%) translateY(0) scale(1); }
+        20% { transform: translateX(-50%) translateY(-6px) scale(1.06); }
+        40% { transform: translateX(-50%) translateY(0) scale(1.01); }
+        60% { transform: translateX(-50%) translateY(-3px) scale(1.04); }
+        80% { transform: translateX(-50%) translateY(0) scale(1.02); }
+    }
+
+
+    .mobile-cta-reach .cta-icon {
+
+        width: 36px;
+        height: 36px;
+        border-radius: 9999px;
+        background: rgba(255,255,255,0.16);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 auto;
+        position: relative;
+    }
+
+    /* Icône “calendrier” propre (pas emoji) */
+    .mobile-cta-reach .cta-icon::before {
+        content: '';
+        width: 18px;
+        height: 18px;
+        border-radius: 4px;
+        border: 2px solid rgba(255,255,255,0.92);
+        box-sizing: border-box;
+        display: block;
+        position: relative;
+    }
+
+    .mobile-cta-reach .cta-icon::after {
+        content: '';
+        position: absolute;
+        top: 10px;
+        left: 9px;
+        width: 18px;
+        height: 2px;
+        background: rgba(255,255,255,0.92);
+        border-radius: 2px;
+        box-shadow: 0 4px 0 rgba(255,255,255,0.92);
+    }
+
+}
+
+@keyframes mobile-cta-shimmer {
+    0% { background-position: 0% 50%; }
+    60% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes mobile-cta-pop {
+    0%, 100% { transform: translateX(-50%) translateY(0) scale(1); }
+    30% { transform: translateX(-50%) translateY(-2px) scale(1.03); }
+    60% { transform: translateX(-50%) translateY(0) scale(1.01); }
+}
+
+@keyframes mobile-cta-jitter {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    25% { transform: translateX(calc(-50% + 1px)) translateY(-1px); }
+    50% { transform: translateX(-50%) translateY(-2px); }
+    75% { transform: translateX(calc(-50% - 1px)) translateY(-1px); }
+}
+
+
+
+
 
 /* Hamburger */
 .menu-toggle {
@@ -250,13 +467,13 @@ nav {
     justify-content: center;
     align-items: center;
     text-align: center;
-    color: white;
+    color: #fff;
     margin-top: 52px;
     background:
-        linear-gradient(160deg, rgba(0, 60, 180, 0.72) 0%, rgba(0, 180, 216, 0.55) 100%),
-        url('https://kiwamisports.com/cdn/shop/collections/trail-homme_bfc1c85a-0a8c-41f3-b1e4-223eb4cda3fd_1800x.jpg?v=1668685864');
-    background-size: cover;
-    background-position: center 30%;
+        radial-gradient(ellipse at 20% 50%, rgba(30, 80, 200, 0.9) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 20%, rgba(0, 160, 210, 0.75) 0%, transparent 50%),
+        radial-gradient(ellipse at 60% 90%, rgba(5, 30, 120, 0.85) 0%, transparent 55%),
+        linear-gradient(145deg, #051B60 0%, #0A3A8A 35%, #0770B8 65%, #059BBF 100%);
 }
 
 .hero-content {
@@ -270,14 +487,14 @@ nav {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: rgba(255, 255, 255, 0.18);
-    backdrop-filter: blur(10px);
+    background: var(--primary-light);
+    color: var(--primary);
     padding: 0.4rem 1.2rem;
     border-radius: var(--radius-full);
     font-size: 0.85rem;
-    font-weight: 500;
+    font-weight: 600;
     margin-bottom: 1.5rem;
-    border: 1px solid rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(10, 88, 202, 0.15);
 }
 
 .pulse {
@@ -303,17 +520,19 @@ nav {
 .hero h1 {
     font-family: var(--font-display);
     font-size: clamp(2.4rem, 5vw, 3.8rem);
-    font-weight: 700;
+    font-weight: 800;
     margin-bottom: 0.6rem;
     line-height: 1.15;
-    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
+    color: #fff;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.35);
     animation: fadeInUp 0.9s ease;
 }
 
 .location-text {
     font-size: 1.2rem;
-    opacity: 0.92;
-    font-weight: 300;
+    opacity: 0.88;
+    color: rgba(255,255,255,0.85);
+    font-weight: 500;
     margin-bottom: 2rem;
     animation: fadeInUp 0.9s ease 0.15s both;
 }
@@ -326,92 +545,76 @@ nav {
     animation: fadeInUp 0.9s ease 0.3s both;
 }
 
+/* Hero badge on dark background */
+.hero-badge {
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.3);
+    backdrop-filter: blur(8px);
+}
+
 .btn-primary {
     background: #fff;
     color: var(--primary);
-    padding: 0.75rem 2rem;
+    padding: 0.95rem 2.5rem;
     border-radius: var(--radius-full);
-    font-weight: 600;
-    font-size: 0.95rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+    font-weight: 800;
+    font-size: 1rem;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.22);
     transition: var(--transition);
+    border: none;
 }
 
 .btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
+    background: #EAF2FF;
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.28);
 }
 
 .btn-secondary {
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255,255,255,0.1);
     color: #fff;
-    padding: 0.75rem 2rem;
+    padding: 0.95rem 2.2rem;
     border-radius: var(--radius-full);
-    font-weight: 500;
+    font-weight: 600;
     font-size: 0.95rem;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,0.4);
     transition: var(--transition);
+    backdrop-filter: blur(6px);
 }
 
 .btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.25);
+    background: rgba(255,255,255,0.2);
     transform: translateY(-2px);
 }
 
-/* Scroll indicator */
+/* Scroll indicator — single chevron arrow */
 .scroll-indicator {
     position: absolute;
-    bottom: 2rem;
+    bottom: 2.2rem;
     left: 50%;
     transform: translateX(-50%);
-    animation: scrollBounce 2s ease-in-out infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: arrowBounce 2s ease-in-out infinite;
+    opacity: 0.8;
 }
 
 .scroll-indicator span {
     display: block;
-    width: 24px;
-    height: 38px;
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    border-radius: 14px;
-    position: relative;
+    width: 22px;
+    height: 22px;
+    border-right: 2.5px solid rgba(255,255,255,0.9);
+    border-bottom: 2.5px solid rgba(255,255,255,0.9);
+    transform: rotate(45deg);
+    border-radius: 0;
+    position: static;
 }
 
-.scroll-indicator span::after {
-    content: '';
-    width: 4px;
-    height: 8px;
-    background: rgba(255, 255, 255, 0.7);
-    border-radius: 2px;
-    position: absolute;
-    top: 6px;
-    left: 50%;
-    transform: translateX(-50%);
-    animation: scrollDot 2s ease-in-out infinite;
-}
-
-@keyframes scrollBounce {
-
-    0%,
-    100% {
-        transform: translateX(-50%) translateY(0);
-    }
-
-    50% {
-        transform: translateX(-50%) translateY(6px);
-    }
-}
-
-@keyframes scrollDot {
-    0% {
-        opacity: 1;
-        top: 6px;
-    }
-
-    100% {
-        opacity: 0;
-        top: 20px;
-    }
+@keyframes arrowBounce {
+    0%, 100% { transform: translateX(-50%) translateY(0);  opacity: 0.7; }
+    50%       { transform: translateX(-50%) translateY(7px); opacity: 1; }
 }
 
 /* ===========================
@@ -420,11 +623,18 @@ nav {
 .hero-section {
     padding: 130px 2rem 70px;
     text-align: center;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    /* Même fond “premium” que sur index (radial + linear) */
+    background:
+        radial-gradient(ellipse at 20% 50%, rgba(30, 80, 200, 0.9) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 20%, rgba(0, 160, 210, 0.75) 0%, transparent 50%),
+        radial-gradient(ellipse at 60% 90%, rgba(5, 30, 120, 0.85) 0%, transparent 55%),
+        linear-gradient(145deg, #051B60 0%, #0A3A8A 35%, #0770B8 65%, #059BBF 100%);
     color: white;
     position: relative;
     overflow: hidden;
 }
+
+
 
 .hero-section::before {
     content: '';
@@ -522,10 +732,24 @@ nav {
     background: var(--card-bg);
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    padding: 2rem 1.8rem;
+    padding: 2.2rem 2rem;
     transition: var(--transition);
     position: relative;
     overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+.service-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 100% 0%, rgba(0, 150, 180, 0.03) 0%, transparent 60%);
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.service-card:hover::after {
+    opacity: 1;
 }
 
 .service-card::before {
@@ -552,8 +776,15 @@ nav {
 }
 
 .service-icon {
-    font-size: 2.2rem;
-    margin-bottom: 1rem;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    background: var(--primary-light);
+    margin-bottom: 1.5rem;
+    transition: var(--transition);
 }
 
 .service-card h3 {
@@ -806,10 +1037,16 @@ nav {
 .page-header {
     padding: 130px 2rem 50px;
     text-align: center;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    /* Même fond “premium” que sur index (radial + linear) */
+    background:
+        radial-gradient(ellipse at 20% 50%, rgba(30, 80, 200, 0.9) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 20%, rgba(0, 160, 210, 0.75) 0%, transparent 50%),
+        radial-gradient(ellipse at 60% 90%, rgba(5, 30, 120, 0.85) 0%, transparent 55%),
+        linear-gradient(145deg, #051B60 0%, #0A3A8A 35%, #0770B8 65%, #059BBF 100%);
     color: white;
     position: relative;
 }
+
 
 .page-header::after {
     content: '';
@@ -917,18 +1154,29 @@ nav {
 }
 
 /* ===========================
-   FOOTER
+   FOOTER (Light Minimalist)
    =========================== */
 footer {
-    padding: 2.5rem 2rem;
+    padding: 3rem 2rem;
     text-align: center;
-    background: var(--bg-footer);
+    background: var(--bg-alt);
     border-top: 1px solid var(--border);
 }
 
 footer p {
-    color: var(--text-muted);
-    font-size: 0.88rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+footer a {
+    color: var(--primary);
+    text-decoration: underline;
+    transition: var(--transition);
+}
+
+footer a:hover {
+    color: var(--primary-dark);
 }
 
 /* ===========================
@@ -1119,4 +1367,57 @@ footer p {
     .soin-content {
         padding: 1.2rem;
     }
+}
+
+/* --- Inline SVG Icons & Mobile Sticky CTA --- */
+.service-icon svg {
+    width: 2.2rem;
+    height: 2.2rem;
+    color: var(--primary);
+    transition: var(--transition);
+}
+
+.service-card:hover .service-icon svg {
+    color: var(--accent);
+    transform: scale(1.1);
+}
+
+/* Navigation actions wrapper — logo side only contains hamburger on mobile */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Inside burger menu: show rdv button prominently */
+.nav-content .rdv-button {
+    width: 100%;
+    margin-top: 0.5rem;
+    font-size: 1.05rem;
+    padding: 1rem 2rem;
+    border-radius: var(--radius);
+}
+
+/* On desktop: rdv-button inside nav-content is inline, not full-width */
+@media (min-width: 769px) {
+    .nav-content .rdv-button {
+        width: auto;
+        margin-top: 0;
+        font-size: 0.9rem;
+        padding: 0.6rem 1.5rem;
+        border-radius: var(--radius-full);
+    }
+}
+
+/* --- SVG Icons --- */
+.service-icon svg {
+    width: 2.2rem;
+    height: 2.2rem;
+    color: var(--primary);
+    transition: var(--transition);
+}
+
+.service-card:hover .service-icon svg {
+    color: var(--accent);
+    transform: scale(1.1);
 }
