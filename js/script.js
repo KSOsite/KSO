@@ -1,15 +1,5 @@
 // ===== KSO — Shared Script =====
 
-// --- Doctolib Widget Integration ---
-document.addEventListener('DOMContentLoaded', () => {
-    (function (d, s, id) {
-        if (d.getElementById(id)) return;
-        var js = d.createElement(s); js.id = id;
-        js.src = "https://www.doctolib.fr/external_button/1.js";
-        d.head.appendChild(js);
-    }(document, 'script', 'doctolib-js'));
-});
-
 document.addEventListener('DOMContentLoaded', () => {
     // --- Header scroll effect ---
     const header = document.querySelector('header');
@@ -24,6 +14,35 @@ document.addEventListener('DOMContentLoaded', () => {
                 ticking = true;
             }
         }, { passive: true });
+    }
+
+    // --- Sticky RDV bar (scroll-triggered) ---
+    const stickyBar = document.getElementById('stickyRdvBar');
+    const stickyClose = document.getElementById('stickyRdvClose');
+    if (stickyBar) {
+        let barDismissed = sessionStorage.getItem('rdvBarClosed') === '1';
+        let barVisible = false;
+        const TRIGGER_PX = 300;
+
+        const updateBar = () => {
+            if (barDismissed) return;
+            const shouldShow = window.scrollY > TRIGGER_PX;
+            if (shouldShow !== barVisible) {
+                barVisible = shouldShow;
+                stickyBar.classList.toggle('visible', shouldShow);
+            }
+        };
+
+        window.addEventListener('scroll', updateBar, { passive: true });
+
+        if (stickyClose) {
+            stickyClose.addEventListener('click', () => {
+                barDismissed = true;
+                barVisible = false;
+                stickyBar.classList.remove('visible');
+                sessionStorage.setItem('rdvBarClosed', '1');
+            });
+        }
     }
 
     // --- Mobile menu ---
@@ -41,6 +60,39 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // --- Mobile CTA central (reachability) ---
+    const mobileCta = document.querySelector('.mobile-cta-reach');
+    if (mobileCta) {
+        const TRIGGER_PX = 180;
+        let shown = false;
+        const isMobile = () => window.matchMedia('(max-width: 600px)').matches;
+
+        const update = () => {
+            // Ne jamais afficher sur desktop
+            if (!isMobile()) {
+                shown = false;
+                mobileCta.classList.remove('visible');
+                return;
+            }
+
+            const shouldShow = window.scrollY > TRIGGER_PX;
+            if (shouldShow && !shown) {
+                shown = true;
+                mobileCta.classList.add('visible');
+            } else if (!shouldShow && shown) {
+                shown = false;
+                mobileCta.classList.remove('visible');
+            }
+        };
+
+        window.addEventListener('scroll', update, { passive: true });
+        window.addEventListener('resize', update);
+        update();
+    }
+
+
+
 
     // --- Smooth scroll for anchor links ---
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -66,3 +118,4 @@ document.addEventListener('DOMContentLoaded', () => {
         reveals.forEach(el => revealObserver.observe(el));
     }
 });
+
